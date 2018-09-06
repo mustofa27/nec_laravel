@@ -71,7 +71,7 @@
     <!--==========================
       Services Section
     ============================-->
-    <section id="services">
+    <section id="services" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
           <h2>Program Kami</h2>
@@ -80,23 +80,12 @@
         <div class="row">
           <?php $count = 0;?>
           @foreach($program as $l)  
-          <div class="col-lg-6">
-            <a href="{{ url('/daftar/'.$l->id)}}">
-              @if($count%4 == 0)
-              <div class="box wow fadeInRight">
-              @elseif($count%4 == 1)
-              <div class="box wow fadeInRight" data-wow-delay="0.2s">
-              @elseif($count%4 == 2)
-              <div class="box wow fadeInLeft">
-              @elseif($count%4 == 3)
-              <div class="box wow fadeInLeft" data-wow-delay="0.2s">
-              @endif
-                <div class="lok-icon"><img src="{{ asset($l->img) }}" class="kota-img"></div>
-                <div class="lok-text">
-                  <h4 class="title">{{$l->name}}</h4>
-                </div>
-              </div>
-            </a>
+          <div class="columns">
+            <ul class="price">
+              <li class="header">{{$l->name}}</li>
+              <li class="grey">{{"Rp ".$l->harga}}</li>
+              <li>{{$l->detail}}</li>
+            </ul>
           </div>
           <?php $count++;?>
           @endforeach
@@ -115,11 +104,11 @@
       </div>
 
       <div class="container-fluid">
-        <div class="row no-gutters">
+        <div class="row">
           @foreach($galeri as $g)
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-4 col-md-4">
               <div class="portfolio-item wow fadeInUp">
-                <a href="{{ asset($g->path) }}" class="portfolio-popup" target="blank">
+                <a href="{{ asset($g->path) }}" class="portfolio-popup">
                   <img src="{{ asset($g->path) }}" alt="">
                   <div class="portfolio-overlay">
                     <div class="portfolio-info"><h2 class="wow fadeInUp">{{ $g->name }}</h2></div>

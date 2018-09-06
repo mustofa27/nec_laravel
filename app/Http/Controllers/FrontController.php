@@ -8,6 +8,7 @@ use App\Transaksi;
 use App\Artikel;
 use App\Bukti;
 use App\Program;
+use App\Penginapan;
 use App\Galeri;
 
 use Mail;
@@ -28,7 +29,7 @@ class FrontController extends Controller
     $galeri = Galeri::orderBy('id', 'desc')
       ->limit(8)
       ->get();
-    $program = Program::where('status', 'active')
+    $program = Program::where('status', 'aktif')
       ->orderBy('id', 'desc')
       ->get();
 		return view('front.home', compact('artikel', 'galeri', 'program'));
@@ -45,10 +46,11 @@ class FrontController extends Controller
   }
 
 	public function daftar(){
-		$jurusan = Jurusan::orderBy('name', 'asc')->get();
-		$lokasi = Lokasi::orderBy('name', 'asc')->join('tryouts', 'tryouts.id_lokasi', 'lokasis.id')->select('lokasis.*')->get();
+		$program = Program::orderBy('id_group', 'asc')->leftJoin('groups', 'programs.id_group', 'groups.id')
+      ->select('programs.*', 'groups.name as group')->get();
+    $penginapan = Penginapan::all();
 		session()->forget('registered');
-		return view('front.daftar', compact('jurusan', 'lokasi'));
+		return view('front.daftar', compact('program','penginapan'));
 	}
 
   public function daftarByLokasi($id_lokasi){

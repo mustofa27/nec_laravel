@@ -1085,3 +1085,46 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer .credits a {
   color: #0c2e8a;
 }
+
+/*////////////////////////////////////////////////////////////////*/
+{
+  box-sizing: border-box;
+}
+.columns {
+  float: left;
+  width: 23.3%;
+  padding: 8px;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.price {
+  border: 1px solid #c8c8c8;
+  border-radius: 10px;
+  list-style-type: none;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+  font-size: 25px;
+  color: #6cc;
+}
+
+.price li {
+  padding: 16px;
+  font-size: 16px;
+}
+
+.price .grey {
+  background: #6cc;
+  font-size: 20px;
+  color: white;
+}
