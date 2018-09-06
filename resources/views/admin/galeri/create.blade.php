@@ -8,7 +8,7 @@
 
         <div class="box" style="overflow:auto">
           <div class="box-header">
-            @if (isset($data['galeri']))
+            @if (isset($galeri))
             <h3 class="box-title">
               Edit Galeri
             </h3>
@@ -38,9 +38,9 @@
                 @endif
               </div>
               <div class="form-group">
-                <label>deskripsi</label>
-                @if(isset($galeri->deskripsi))
-                <textarea class="form-control" required="" name="deskripsi">{{ $galeri->deskripsi }}</textarea>
+                <label>Deskripsi</label>
+                @if(isset($galeri->desc))
+                <textarea class="form-control" required="" name="deskripsi">{{ $galeri->desc }}</textarea>
                 @else
                 <textarea class="form-control" required="" name="deskripsi"></textarea>
                 @endif

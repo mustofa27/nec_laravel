@@ -8,7 +8,7 @@
 
         <div class="box" style="overflow:auto">
           <div class="box-header">
-            @if (isset($data['lokasi']))
+            @if (isset($artikel))
             <h3 class="box-title">
               Edit Artikel
             </h3>
