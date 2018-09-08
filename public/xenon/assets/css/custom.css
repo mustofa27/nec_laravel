@@ -1,0 +1,36 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {	
+	font-size: 12px;
+	height: auto;
+}
+
+a {
+}
+
+.sidebar-menu { width: 200px; }
+.sidebar-menu .main-menu { padding-left: 20px; padding-right: 20px; }
+.dataTables_wrapper { color: #2a2d32; }
+.dt-button {color: white !important; font-size: 12px !important; border: none !important;}
+.dt_btn_add 	{background: #68b828 !important; }
+.dt_btn_revisi 	{background: #18a8df !important; }
+.dt_btn_confirm 	{background: #68b828 !important; }
+.dt_btn_unconfirm 	{background: #F44336 !important; }
+.dt_btn_cancel 	{background: #F44336 !important; }
+.dt_btn_refresh 	{background: #18a8df !important; }
+.dt_btn_export 	{background: #18a8df !important; }
+.dt_btn_polis 	{background: #68b828 !important; }
+.dt_btn_view 	{background: #18a8df !important; }
+.dt_btn_endorse 	{background: #18a8df !important; }
+.dt_btn_submit 	{background: #68b828 !important; }
+.dt_btn_invoice 	{background: #18a8df !important; }
+.dt_btn_colvis 	{background: #9C27B0 !important; }
+.buttons-columnVisibility.active {background: #a8f17a !important;}
+.buttons-columnVisibility {background: #e8e8e8 !important; color: #2d2d2d !important;}
+.ui-dialog  {font-size:12px !important;}
+h4 {color: #555 !important;}
+.control-label { text-align: left !important; }
