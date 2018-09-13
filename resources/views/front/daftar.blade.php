@@ -59,7 +59,7 @@
                                                 <div class="panel panel-color panel-info" style="border: 1px solid #eeee; ">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">
-                                                            <input type="radio" class="cbr cbr-primary" name="id_package" id="id_package" data-validate="required" value="<?php echo $p->ID_PACKAGE; ?>"> 
+                                                            <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $p->id; ?>"> 
                                                             <?php 
                                                               echo $p->name; ?> (Harga : <?php echo $p->harga;
                                                             ?>)
@@ -432,35 +432,47 @@
             $(this).parents(".control-group").remove();
         });
 
-        $(".multi-select").multiSelect({
-            afterInit: function ()
-            {
-                // Add alternative scrollbar to list
-                this.$selectableContainer.add(this.$selectionContainer).find('.ms-list').perfectScrollbar();
-            },
-            afterSelect: function ()
-            {
-                // Update scrollbar size
-                this.$selectableContainer.add(this.$selectionContainer).find('.ms-list').perfectScrollbar('update');
-            }
-        });
-
-        $(".selectboxit").selectBoxIt().on('open', function ()
-        {
-            // Adding Custom Scrollbar
-            $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-        });
-
     });
 </script>
 
 <script>
-    $("[id='id_package']")
+    $("[id='id_program']")
             .change(function () {
-                var value = $(this).val();
-                $("[id='id_package_result']").text(value);
-            })
-            .change();
+                if(this.checked){
+                    var value = $(this).val();
+                    var checked = $("#id_program:checked");
+                    var programs = {!! json_encode($program->toArray()) !!};
+                    var tipe = "";
+                    var indikator = 0;
+                    for(i = 0; i < programs.length; i++){
+                        if(programs[i].id == value){
+                            tipe = programs[i].tipe;
+                        }
+                    }
+                    if(tipe == "single"){
+                        if(checked.length > 1){
+                            $(this).removeAttr("checked");
+                            window.alert("Kamu tidak bisa memilih 2 program dengan durasi 1 bulan atau lebih");
+                        }
+                    } else{
+                        if(checked.length > 1){
+                            var count = 0;
+                            for(i = 0; i < checked.length; i++){
+                                var nilai = $(checked[i]).val();
+                                for(j = 0; j < programs.length; j++){
+                                    if(programs[j].id == nilai && programs[j].tipe == "single"){
+                                        count++;
+                                    }
+                                }
+                            }
+                            if(count > 0){
+                                $(this).removeAttr("checked");
+                                window.alert("Kamu tidak bisa memilih 2 program dengan durasi 1 bulan atau lebih");
+                            }
+                        }
+                    }
+                }
+            });
     $("[id='pendaftar_name']")
             .change(function () {
                 var value = $(this).val();
