@@ -21,7 +21,6 @@
                   <tr>
                     <th>Nomor</th>
                     <th>Tanggal Mulai</th>
-                    <th>Pengirim</th>
                     <th>Status</th>
                     <th>Kode</th>
                     <th>Grand Total</th>
@@ -33,7 +32,6 @@
                   <tr>
                     <th>Nomor</th>
                     <th>Tanggal Mulai</th>
-                    <th>Pengirim</th>
                     <th>Status</th>
                     <th>Kode</th>
                     <th>Grand Total</th>
@@ -47,7 +45,6 @@
                     <tr>
                       <td>{{ ++$count }}</td>
                       <td>{{ $s->tanggal_mulai }}</td>
-                      <td>{{ $s->pengirim }}</td>
                       <td>{{ $s->status }}</td>
                       <td>{{ $s->kode }}</td>
                       <td>{{ $s->grand_total }}</td>

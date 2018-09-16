@@ -11,7 +11,8 @@
             </div>
 
             <div class="panel-body">
-                <form role="forl" id="rootwizard" class="form-wizard validate" novalidate action="pendaftaran/create_action" method='post'>
+                <form role="forl" id="rootwizard" class="form-wizard validate" action="{{url('daftar')}}" method='post'>
+                    {!! csrf_field() !!}
                     <ul class="tabs">
                       <li class="active">
                           <a href="#fwv-1" data-toggle="tab">
@@ -124,7 +125,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="pendaftar_tgl_lahir">Tanggal Lahir</label>
-                                        <input class="form-control datepicker" name="pendaftar_tgl_lahir" id="pendaftar_tgl_lahir" data-validate="required" data-message-required="Tanggal Lahir harus diisi" placeholder="Tanggal Lahir" />
+                                        <input type="date" class="form-control" name="pendaftar_tgl_lahir" id="pendaftar_tgl_lahir" data-validate="required" data-message-required="Tanggal Lahir harus diisi" placeholder="Tanggal Lahir" />
                                     </div>
                                 </div>
 
@@ -160,7 +161,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="pendaftar_institusi">Institusi</label>
-                                        <input class="form-control" name="pendaftar_institusi" id="pendaftar_institusi" placeholder="(Opsional) Institusi" />                                        
+                                        <input class="form-control" name="pendaftar_institusi" id="pendaftar_institusi" placeholder="Institusi (Isi '-' jika tidak ada" data-validate="required" data-message-required="Institusi harus diisi"/>
                                     </div>
                                 </div>
 
@@ -177,11 +178,6 @@
                                 <h5>Tambah Peserta baru</h5>
 
                                 <div class="input-group control-group after-add-more">
-                                    <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Nama" style="height: 32px;" >
-                                    <p class="col-md-1"></p>
-                                    <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Alamat" style="height: 32px;" >
-                                    <p class="col-md-1"></p>
-                                    <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Telepon" style="height: 32px;" >
                                     <div class="input-group-btn"> 
                                         <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i></button>
                                     </div>
@@ -196,7 +192,7 @@
                                         <p>Silahkan pilih tanggal mulai untuk program anda.</p>
                                         <select class="form-control" name="course_date_start" id="course_date_start" data-validate="required" data-message-required="Harus memilih tanggal mulai">
                                             <option value="">Pilih</option>
-                                            <?php $tanggal = date('l'); $bulan = date('n'); $tahun = date('Y');
+                                            <?php $tanggal = date('d'); $bulan = date('n'); $tahun = date('Y');
                                                 if($tanggal < 10){
                                                     $tanggal_mulai = 10;
                                                     $bulan_mulai = $bulan;
@@ -246,25 +242,14 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12">
-                                    <p>Opsional untuk Dipilih: </p>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <?php foreach ($penginapan as $pg) { ?>
                                     <div class="col-md-6">
                                         <div class="panel panel-color panel-info" style="border: 1px solid #eeee; ">
                                             <div class="panel-heading">
                                                 <h3 class="panel-title">
-                                                    <input type="radio" class="cbr cbr-primary" name="id_penginapan" id="id_penginapan" data-validate="required" value="<?php echo $pg->ID_PENGINAPAN; ?>"> 
-                                                    <?php echo $pg->PENGINAPAN_NAME; ?> (Harga : <?php echo $pg->PENGINAPAN_HARGA; ?>)
+                                                    <input type="radio" class="cbr cbr-primary" name="id_penginapan" id="id_penginapan" data-validate="required" value="<?php echo $pg->id; ?>"> 
+                                                    <?php echo $pg->name; ?> (Harga : <?php echo $pg->harga; ?>)
                                                 </h3>
-                                                <div class="panel-options">
-                                                    <a href="#" data-toggle="panel">
-                                                        <span class="collapse-icon">&ndash;</span>
-                                                        <span class="expand-icon">+</span>
-                                                    </a>
-                                                </div>                            
                                             </div>    
                                             <div class="panel-body">
                                                 <span class="badge badge-info pull-right" id="modal" name="modal">
@@ -405,11 +390,11 @@
 
                 <div class="copy hide">
                     <div class="control-group input-group" style="margin-top:10px">
-                        <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Nama" style="height: 32px;" data-validate="required">
+                        <input class="col-md-3" name="addmore[]" class="form-control" placeholder="Nama" style="height: 32px;" required="required">
                         <p class="col-md-1"></p>
-                        <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Alamat" style="height: 32px;" data-validate="required">
+                        <input class="col-md-3" name="addmore[]" class="form-control" placeholder="Alamat" style="height: 32px;" required="required">
                         <p class="col-md-1"></p>
-                        <input type="text" class="col-md-3" name="addmore[]" class="form-control" placeholder="Telepon" style="height: 32px;" data-validate="number">
+                        <input class="col-md-3" name="addmore[]" class="form-control" placeholder="Telepon" style="height: 32px;" required="required">
                         <div class="input-group-btn"> 
                             <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i></button>
                         </div>

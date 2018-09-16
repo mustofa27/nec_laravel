@@ -4,8 +4,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Selamat, Pendaftaran Berhasil!</h2>
-          <p style="margin-bottom: 50px">Data diri peserta berhasil disimpan, nomor peserta sudah dikirim ke email masing-masing peserta. <b>Silahkan cek email peserta</b> atau catat dan <i>screenshot</i> halaman ini untuk melakukan pembayaran dan upload bukti pembayaran.</p>
-          <center><h3>Peserta tidak perlu mendaftar kembali, data peserta sudah disimpan</h3></center>
+          <p style="margin-bottom: 50px">Data diri peserta berhasil disimpan, kode transaksi sudah dikirim ke email anda. <b>Silahkan cek email </b> atau catat dan <i>screenshot</i> halaman ini untuk melakukan pembayaran dan upload bukti pembayaran.</p>
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 pendaftar-result">
@@ -13,41 +12,16 @@
               <table width="100%">
               @foreach($pendaftars as $d)
                 <tr style="margin-top: 50px">
-                  <td rowspan="4" width="20%"><img src="{{ asset($d->path_foto) }}" style="width: 100px"></td>
                   <td width="30%">Nama</td>
                   <td width="50%">: {{ $d->nama }}</td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td>: {{ $d->tanggal_lahir }}</td>
+                  <td>No HP</td>
+                  <td>: {{ $d->hp }}</td>
                 </tr>
                 <tr>
-                  <td>Nomor Peserta</td>
-                  <td>: {{ $d->nomor_peserta }}</td>
-                </tr>
-                <tr>
-                  <td>Jenis TryOut</td>
-                  <td>: 
-                  <?php
-                  switch ($d->jenis_sbmptn) {
-                    case 'ipa':
-                      echo "SBMPTN SAINTEK (IPA)";
-                      break;
-                    
-                    case 'ips':
-                      echo "SBMPTN SOSHUM (IPS)";
-                      break;
-                    
-                    case 'stan':
-                      echo "USM STAN";
-                      break;
-                    
-                    default:
-                      # code...
-                      break;
-                  }
-                  ?>
-                  </td>
+                  <td>Alamat</td>
+                  <td>: {{ $d->kota_asal }}</td>
                 </tr>
               @endforeach
               </table>

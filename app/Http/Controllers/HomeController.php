@@ -41,10 +41,8 @@ class HomeController extends Controller
           $bukti = Bukti::where('id_transaksi',$transaksi->id)->first();
           if(empty($bukti)){
             $transaksi->path = "";
-            $transaksi->pengirim = "";
           } else{
             $transaksi->path = $bukti->path;
-            $transaksi->pengirim = $bukti->pengirim;
           }
         }
         $data['transaksi'] = $transaksis;

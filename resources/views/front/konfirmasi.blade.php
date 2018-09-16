@@ -9,12 +9,8 @@
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
               <div class="form-group col-sm-12">
-                <label>Nomor Salah Satu Peserta dalam Paket</label>
-                <input type="number" name="nomor_peserta" required="" class="form-control" required="">
-              </div>
-              <div class="form-group col-sm-12">
-                <label>Pengirim (atas nama)</label>
-                <input type="text" name="pengirim" required="" class="form-control" required="">
+                <label>Kode Transaksi</label>
+                <input type="text" name="kode" required="" class="form-control" required="">
               </div>
               <div class="form-group col-sm-12">
                 <label>Foto Bukti Pembayaran</label>
