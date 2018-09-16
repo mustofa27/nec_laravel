@@ -45,6 +45,11 @@ class FrontController extends Controller
     return view('front.article', compact('article', 'webTitle'));
   }
 
+  public function all_article(){
+    $all_article = Artikel::orderBy('updated_at', 'desc')->get();
+    return view('front.all_article', compact('all_article'));
+  }
+
 	public function daftar(){
 		$program = Program::orderBy('id_group', 'asc')->leftJoin('groups', 'programs.id_group', 'groups.id')
       ->select('programs.*', 'groups.name as group')->get();

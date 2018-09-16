@@ -38,6 +38,7 @@ Route::get('konfirmasi', 'FrontController@konfirmasiForm');
 Route::post('konfirmasi', 'FrontController@konfirmasi');
 Route::get('cek-status', 'FrontController@cekForm');
 Route::post('cek-status', 'FrontController@cek');
+Route::get('article', 'FrontController@all_article');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

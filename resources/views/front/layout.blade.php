@@ -131,8 +131,8 @@
               [url('/'), 'Home'],
               [url('/daftar'), 'Daftar'],
               [url('/konfirmasi'), 'Konfirmasi Pembayaran'],
-              [url('/cek-status'), 'Galeri'],
-              [url('/hasil'), 'Artikel'],
+              [url('/galeri'), 'Galeri'],
+              [url('/article'), 'Artikel'],
             ];
             $class = '';
             foreach ($links as $key => $value) {
