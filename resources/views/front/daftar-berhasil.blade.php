@@ -4,11 +4,21 @@
       <div class="container">
         <div class="section-header">
           <h2>Selamat, Pendaftaran Berhasil!</h2>
-          <p style="margin-bottom: 50px">Data diri peserta berhasil disimpan, kode transaksi sudah dikirim ke email anda. <b>Silahkan cek email </b> atau catat dan <i>screenshot</i> halaman ini untuk melakukan pembayaran dan upload bukti pembayaran.</p>
+          <p style="margin-bottom: 50px">Data diri peserta berhasil disimpan, kode transaksi sudah dikirim ke email anda. <b>Silahkan cek email </b> atau catat dan <i>screenshot</i> halaman ini untuk melakukan pembayaran dan upload bukti pembayaran. Bukti pendaftaran bisa didownload <a href="{{url('download/'.$product->kode)}}">disini</a>.</p>
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 pendaftar-result">
-              <span>Identitas Pendaftar:</span>
+              <table>
+                <tr>
+                  <td>Kode Transaksi</td>
+                  <td>:</td>
+                  <td>{{ $product->kode }}</td>
+                </tr>
+                <tr>
+                  <td>Identitas Pendaftar</td>
+                  <td>:</td>
+                </tr>
+              </table>
               <table width="100%">
               @foreach($pendaftars as $d)
                 <tr style="margin-top: 50px">

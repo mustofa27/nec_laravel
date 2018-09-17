@@ -26,7 +26,7 @@ Route::get('mail', function(){
             ->subject('coba ticket');
     });
 });
-Route::get('download/{nomor_peserta}', 'FrontController@downloadTiket');
+Route::get('download/{kode}', 'FrontController@downloadTiket');
 // Route::get('/daftar-pengguna', 'FrontController@daftarpengguna');
 Route::post('/daftar-pengguna', 'FrontController@daftarpengguna');
 Route::get('pendaftaran-berhasil', 'FrontController@berhasil');

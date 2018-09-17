@@ -133,14 +133,13 @@ class FrontController extends Controller
     }
 		$pendaftar = Pendaftar::where('id_transaksi', $product->id)->where('email', '!=', '')->first();
     $pendaftars = Pendaftar::where('id_transaksi', $product->id)->get();
-    //$this->kirimEmail($pendaftars, $product->grand_total);
+    $this->kirimEmail($product, $pendaftar, $pendaftars);
 		return view('front.daftar-berhasil', compact('pendaftars', 'product'));
-		// return redirect('pendaftaran-berhasil');
 	}
-  function kirimEmail($product, $pendaftar, $nominal){
-    $data['pendaftar'] = $pendaftar;
-    $data['nominal'] = $nominal;
-    Mail::send('front.email-bayar', $data, function($message) use ($pendaftar,$product){
+  function kirimEmail($product, $pendaftar, $pendaftars){
+    $data['pendaftars'] = $pendaftars;
+    $data['product'] = $product;
+    Mail::send('front.email-bayar', $data, function($message) use ($pendaftar){
       $message->to($pendaftar->email, $pendaftar->nama)
           ->from('necinstitute123@gmail.com','Newcastle English Institute')
           ->subject('Kode Transaksi');
@@ -193,24 +192,22 @@ class FrontController extends Controller
     return redirect()->back();
   }
 
-  public function downloadTiket($nomor_peserta){
-    $pendaftar = Pendaftar::where('pendaftars.nomor_peserta', $nomor_peserta)
-      ->leftJoin('transaksis', 'pendaftars.id_transaksi', 'transaksis.id')
-      ->select('pendaftars.*', 'transaksis.status')
+  public function downloadTiket($kode){
+    $transaksi = Transaksi::where('kode', $kode)
       ->first();
     //dd($pendaftar);
-    if (empty($pendaftar)){
-      session()->put('toast', ['error', 'nomor peserta tidak ditemukan']);
+    if (empty($transaksi)){
+      session()->put('toast', ['error', 'kode transaksi tidak ditemukan']);
     } else {
-      if ($pendaftar->status =='accepted'){
-        $pdf = PDF::loadView('front.ticket', $pendaftar)
-          ->setPaper([0,0, 680.315, 340.157], 'potrait');
-        return $pdf->download('tiket.pdf');
-      } else if ($pendaftar->status == 'rejected'){
-        session()->put('toast', ['error', 'transaksi ditolak']);
-      } else {
-        session()->put('toast', ['error', 'terjadi kesalahan, silahkan hubungi admin']);
-      }
+      $query = Pendaftar::where('id_transaksi', '=', $transaksi->id);
+      $data['jumlah_pendaftar']  = count($query->get());
+      $data['pendaftar']  = $query->where('email','!=','')->first();
+      $data['penginapan']  = Penginapan::where('id', '=', $transaksi->id_penginapan)->first();
+      $data['program']  = Program::join('program_transaksis','program_transaksis.id_program','programs.id')
+        ->where('program_transaksis.id_transaksi','=',$transaksi->id)->get();
+      $data['transaksi'] = $transaksi;
+      $pdf = PDF::loadView('front.invoice', $data);
+      return $pdf->download('tiket.pdf');
     }
   }
 
