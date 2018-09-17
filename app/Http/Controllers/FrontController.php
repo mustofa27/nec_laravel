@@ -71,7 +71,11 @@ class FrontController extends Controller
 	public function daftarkan(Request $request){
     if (empty($request->id_program))
     	return redirect('daftar');
-    $count = sizeof($request->addmore);
+    if(is_null($request->addmore)){
+      $count = 0;
+    } else{
+      $count = sizeof($request->addmore);
+    }
     $jumlah_pendaftar = $count/3 + 1;
     $total_harga = 0;
     foreach ($request->id_program as $id) {

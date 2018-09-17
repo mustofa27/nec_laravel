@@ -185,7 +185,7 @@
                 <tr>
                     <td class="item last">Total</td>
                     <td class="item last">
-                        {{$transaksi->grand_total + 25000}}
+                        {{$transaksi->grand_total}}
                     </td>
                 </tr>
             </table>

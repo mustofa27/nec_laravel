@@ -42,11 +42,11 @@
       <br>
       Ke: 
       <br>
-      <b>7625-009-731(BCA) a/n Mutafawwiqin Rizqoni Ardiansyah</b>
+      <b>14-00-727-534(BCA) a/n AKH. FIRDAUS NUR</b>
       <br>
-      <b>900-00-0970236-7(Mandiri) a/n Mutafawwiqin Rizqoni Ardiansyah</b>
+      <b>7595-01-000372-50-6(BRI) a/n AKH. FIRDAUS NUR</b>
       <br>
-      <b>028-768-7787(BNI) a/n Mutafawwiqin Rizqoni Ardiansyah</b>
+      <b>06-83-148-520(BNI) a/n AKH. FIRDAUS NUR</b>
       <br>
       lalu upload bukti pembayaran melalu tombol di bawah ini
       <br>
