@@ -48,6 +48,11 @@ class FrontController extends Controller
   public function all_article(){
     $all_article = Artikel::orderBy('updated_at', 'desc')->get();
     return view('front.all_article', compact('all_article'));
+  }  
+
+  public function all_galery(){
+    $all_galery = Galeri::orderBy('updated_at', 'desc')->get();
+    return view('front.all_galery', compact('all_galery'));
   }
 
 	public function daftar(){

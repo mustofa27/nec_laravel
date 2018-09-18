@@ -131,7 +131,7 @@
               [url('/'), 'Home'],
               [url('/daftar'), 'Daftar'],
               [url('/konfirmasi'), 'Konfirmasi Pembayaran'],
-              [url('/galeri'), 'Galeri'],
+              [url('/gallery'), 'Galeri'],
               [url('/article'), 'Artikel'],
             ];
             $class = '';

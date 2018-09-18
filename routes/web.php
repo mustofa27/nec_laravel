@@ -39,7 +39,8 @@ Route::post('konfirmasi', 'FrontController@konfirmasi');
 Route::get('cek-status', 'FrontController@cekForm');
 Route::post('cek-status', 'FrontController@cek');
 Route::get('article', 'FrontController@all_article');
-
+Route::get('gallery', 'FrontController@all_galery');
+Route::get('gallery/{url}', 'FrontController@all_galery');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('letmein', 'Auth\LoginController@showLoginForm')->name('login');
