@@ -8,6 +8,7 @@ use App\Transaksi;
 use App\Artikel;
 use App\Bukti;
 use App\Program;
+use App\ProgramTransaksi;
 use App\Penginapan;
 use App\Galeri;
 
@@ -72,117 +73,86 @@ class FrontController extends Controller
     return view('front.daftar', compact('jurusan', 'lokasi', 'id_lokasi', 'to'));
   }
 
-	public function daftarpengguna(Request $request){
-		$product = Product::find($request->product);
-		if (empty($product)){
-			session()->put('toast', ['error', 'paket tidak tersedia, silahkan pilih produk yang ada']);
-			return redirect()->back();
-		}
-		$to = Tryout::where('id', $product->id_tryout)->first();
-		if (empty($to)){
-			session()->put('toast', ['error', 'try out tidak tersedia, silahkan pilih produk yang ada']);
-			return redirect()->back();
-		}
-		// dd($product);
-		$transaksi = new Transaksi;
-		$transaksi->tanggal = date('Y-m-d');
-		$transaksi->status = 'registering';
-		$transaksi->kode = 0;
-		$grand_total = ($product->jumlah_peserta * $to->harga);
-    $transaksi->grand_total = $grand_total - ($product->diskon * $grand_total/100);
-		$transaksi->id_product = $request->product;
-		$transaksi->save();
-		$jurusan = Jurusan::orderBy('name', 'asc')->get();
-		return view('front.daftar-pengguna', compact('jurusan', 'product', 'transaksi'));
-	}
 	public function daftarkan(Request $request){
-		if (session()->get('registered')){
-			session()->forget('registered');
-			// return redirect('daftar');
-		}
-		$product = Transaksi::find($request->id_transaksi);
-    if (empty($product))
+    if (empty($request->id_program))
     	return redirect('daftar');
-    if (isset($request->path_foto)){
-        foreach($request->path_foto as $p){
-            if ($p->getClientSize() > 2048000 || $p->getClientSize() == 0){
-                session()->put('toast', ['error', 'ukuran file terlalu besar. maksimal 2MB']);
-                return redirect('daftar');
-            }
-        }
+    if(is_null($request->addmore)){
+      $count = 0;
+    } else{
+      $count = sizeof($request->addmore);
     }
-    if ($product->status == 'registering'){
-			for($i = 0; $i < count($request->name); $i++){
-					$pendaftar = new Pendaftar;
-					$pendaftar->nama = $request->name[$i];
-					$pendaftar->tempat_lahir = $request->tempat_lahir[$i];
-					$pendaftar->tanggal_lahir = date('Y-m-d', strtotime($request->tanggal_lahir[$i]));
-					$pendaftar->alamat = $request->alamat[$i];
-					$pendaftar->email = $request->email[$i];
-					$pendaftar->hp = $request->hp[$i];
-					$pendaftar->sekolah = $request->sekolah[$i];
-					$pendaftar->fb = $request->fb[$i];
-					$pendaftar->instagram = $request->ig[$i];
-					$pendaftar->twitter = '';
-					$pendaftar->line = $request->line[$i];
-					$pendaftar->wa = $request->wa[$i];
-					$pendaftar->jenis_sbmptn = $request->jenis_sbmptn[$i];
-					$pendaftar->id_jurusan = 1;
-					$pendaftar->id_transaksi = $request->id_transaksi;
-					$pendaftar->path_foto = '';
-					$pendaftar->save();
-					if (isset($request->path_foto[$i])){
-		          if (isset($request->path_foto[$i])){
-		          	// dd($request->path_foto[$i]);
-		          	// dd($request->path_foto[$i]->getClientOriginalExtension());
-		           	$name = sha1(strtotime(date('Y-m-d')).$pendaftar->id).'.'.$request->path_foto[$i]->getClientOriginalExtension();
-		            $request->path_foto[$i]->move($this->path,$name);
-		            $pendaftar->path_foto = $this->path.$name;
-		          }
-		        
-		      }
-					$pendaftar->save();
-					$kodeSoal = 11;
-					switch ($request->jenis_sbmptn[$i]) {
-						case 'ipa':
-							$kodeSoal = 11;
-							break;
-						case 'ips':
-							$kodeSoal = 13;
-							break;
-						case 'ipc':
-							$kodeSoal = 15;
-							break;
-						
-						default:
-							# code...
-							break;
-					}
-					$pendaftar->nomor_peserta = $kodeSoal . $this->generateCode($product->id_product, 2).$this->generateCode($pendaftar->id,4);
-				$pendaftar->save();
-        if ($product->kode == 0)
-          $product->kode = $pendaftar->nomor_peserta;
-			}
-		}
-		
-		$product->status = 'registered';
-		$product->save();
-		$pendaftars = Pendaftar::where('id_transaksi', $product->id)->get();
-    $this->kirimEmail($pendaftars, $product->grand_total);
+    $jumlah_pendaftar = $count/3 + 1;
+    $total_harga = 0;
+    foreach ($request->id_program as $id) {
+      $current = Program::find($id);
+      $total_harga += $current->harga;
+    }
+    $penginapan = Penginapan::find($request->id_penginapan);
+    $total_harga += $penginapan->harga;
+    $product = new Transaksi;
+    $product->tanggal_mulai = $request->course_date_start;
+    $product->status = "registered";
+    $product->kode = "ongoingcreate";
+    $product->grand_total = $total_harga * $jumlah_pendaftar + 25000;
+    $product->id_penginapan = $request->id_penginapan;
+    $product->save();
+    $idt = strval($product->id);
+    $strlen = strlen($idt);
+    if ($strlen = 1) {
+        $id_new = "0000" . (string) ($idt);
+    } else if ($strlen = 2) {
+        $id_new = "000" . (string) ($idt);
+    } else if ($strlen = 3) {
+        $id_new = "00" . (string) ($idt);
+    } else if ($strlen = 4) {
+        $id_new = "0" . (string) ($idt);
+    }
+    $kode_transaksi = "NEC" . date('dmy') . (string) ($id_new);
+    $product->kode = $kode_transaksi;
+    $product->save();
+    foreach ($request->id_program as $id) {
+      $pt = new ProgramTransaksi;
+      $pt->id_program = $id;
+      $pt->id_transaksi = $product->id;
+      $pt->save();
+    }
+    $pendaftar = new Pendaftar;
+    $pendaftar->nama = $request->pendaftar_name;
+    $pendaftar->email = $request->pendaftar_email;
+    $pendaftar->hp = $request->pendaftar_no_hp;
+    $pendaftar->jenis_kelamin = $request->pendaftar_jenis_kelamin;
+    $pendaftar->kota_asal = $request->pendaftar_kota_asal;
+    $pendaftar->tempat_lahir = $request->pendaftar_tempat_lahir;
+    $pendaftar->tgl_lahir = $request->pendaftar_tgl_lahir;
+    $pendaftar->institusi = $request->pendaftar_institusi;
+    $pendaftar->id_transaksi = $product->id;
+    $pendaftar->save();
+    for($i = 0; $i < $count; $i+=3) {
+      $p = new Pendaftar;
+      $p->nama = $request->addmore[$i];
+      $p->email = "";
+      $p->hp = $request->addmore[$i+2];
+      $p->jenis_kelamin = "";
+      $p->kota_asal = $request->addmore[$i+1];
+      $p->tempat_lahir = "";
+      $p->tgl_lahir = "1990-01-01";
+      $p->institusi = "";
+      $p->id_transaksi = $product->id;
+      $p->save();
+    }
+		$pendaftar = Pendaftar::where('id_transaksi', $product->id)->where('email', '!=', '')->first();
+    $pendaftars = Pendaftar::where('id_transaksi', $product->id)->get();
+    $this->kirimEmail($product, $pendaftar, $pendaftars);
 		return view('front.daftar-berhasil', compact('pendaftars', 'product'));
-		// return redirect('pendaftaran-berhasil');
 	}
-  function kirimEmail($pendaftars, $nominal){
-    foreach ($pendaftars as $p) {
-      $data['pendaftar'] = $p;
-      $data['nominal'] = $nominal;
-        $pendaftar = $p;
-        Mail::send('front.email-bayar', $data, function($message) use ($pendaftar){
-          $message->to($pendaftar->email, $pendaftar->nama)
-              ->from('system@masuk-ptn.com','Tim Masuk PTN')
-              ->subject('Nomor Peserta');
-        });
-      }
+  function kirimEmail($product, $pendaftar, $pendaftars){
+    $data['pendaftars'] = $pendaftars;
+    $data['product'] = $product;
+    Mail::send('front.email-bayar', $data, function($message) use ($pendaftar){
+      $message->to($pendaftar->email, $pendaftar->nama)
+          ->from('necinstitute123@gmail.com','Newcastle English Institute')
+          ->subject('Kode Transaksi');
+    });
   }
 	public function berhasil(){
 		return view('front.daftar-berhasil');
@@ -191,26 +161,20 @@ class FrontController extends Controller
     return view('front.konfirmasi');
   }
   public function konfirmasi(Request $request){
-    $peserta = Pendaftar::where('nomor_peserta', $request->nomor_peserta)->first();
-    if (empty($peserta)){
-      session()->put('toast', ['error', 'nomor peserta tidak diketahui']);
-      return redirect()->back();
-    }
-    $transaksi = Transaksi::find($peserta->id_transaksi);
+    $transaksi = Transaksi::where('kode', '=', $request->kode)->first();
     if (empty($transaksi)){
       session()->put('toast', ['error', 'transaksi tidak dikenali']);
       return redirect()->back();
     }
 
-    $bukti = Bukti::where('id_transaksi',$peserta->id_transaksi)->first();
+    $bukti = Bukti::where('id_transaksi',$transaksi->id)->first();
     if(empty($bukti)){
       $bukti = new Bukti;
     }
     $bukti->desc = "desc";
-    $bukti->id_transaksi = $peserta->id_transaksi;
-    $bukti->pengirim = $request->pengirim;
+    $bukti->id_transaksi = $transaksi->id;
     if (isset($request->bukti)){
-      $name = sha1(strtotime(date('Y-m-d')).$peserta->id_transaksi).'.'.$request->bukti->getClientOriginalExtension();
+      $name = sha1(strtotime(date('Y-m-d')).$transaksi->id).'.'.$request->bukti->getClientOriginalExtension();
       $request->bukti->move($this->pathBukti,$name);
       $bukti->path = $this->pathBukti.$name;
     }
@@ -237,24 +201,22 @@ class FrontController extends Controller
     return redirect()->back();
   }
 
-  public function downloadTiket($nomor_peserta){
-    $pendaftar = Pendaftar::where('pendaftars.nomor_peserta', $nomor_peserta)
-      ->leftJoin('transaksis', 'pendaftars.id_transaksi', 'transaksis.id')
-      ->select('pendaftars.*', 'transaksis.status')
+  public function downloadTiket($kode){
+    $transaksi = Transaksi::where('kode', $kode)
       ->first();
     //dd($pendaftar);
-    if (empty($pendaftar)){
-      session()->put('toast', ['error', 'nomor peserta tidak ditemukan']);
+    if (empty($transaksi)){
+      session()->put('toast', ['error', 'kode transaksi tidak ditemukan']);
     } else {
-      if ($pendaftar->status =='accepted'){
-        $pdf = PDF::loadView('front.ticket', $pendaftar)
-          ->setPaper([0,0, 680.315, 340.157], 'potrait');
-        return $pdf->download('tiket.pdf');
-      } else if ($pendaftar->status == 'rejected'){
-        session()->put('toast', ['error', 'transaksi ditolak']);
-      } else {
-        session()->put('toast', ['error', 'terjadi kesalahan, silahkan hubungi admin']);
-      }
+      $query = Pendaftar::where('id_transaksi', '=', $transaksi->id);
+      $data['jumlah_pendaftar']  = count($query->get());
+      $data['pendaftar']  = $query->where('email','!=','')->first();
+      $data['penginapan']  = Penginapan::where('id', '=', $transaksi->id_penginapan)->first();
+      $data['program']  = Program::join('program_transaksis','program_transaksis.id_program','programs.id')
+        ->where('program_transaksis.id_transaksi','=',$transaksi->id)->get();
+      $data['transaksi'] = $transaksi;
+      $pdf = PDF::loadView('front.invoice', $data);
+      return $pdf->download('tiket.pdf');
     }
   }
 

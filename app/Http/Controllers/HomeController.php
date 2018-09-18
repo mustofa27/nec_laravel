@@ -41,10 +41,8 @@ class HomeController extends Controller
           $bukti = Bukti::where('id_transaksi',$transaksi->id)->first();
           if(empty($bukti)){
             $transaksi->path = "";
-            $transaksi->pengirim = "";
           } else{
             $transaksi->path = $bukti->path;
-            $transaksi->pengirim = $bukti->pengirim;
           }
         }
         $data['transaksi'] = $transaksis;
@@ -124,13 +122,15 @@ class HomeController extends Controller
       }
       $pendaftar = Pendaftar::where('id_transaksi', $id)->get();
       foreach ($pendaftar as $p) {
-        $data['pendaftar'] = $p;
-        Mail::send('admin.email-selamat', $data, function($message) use ($pendaftar){
-          $pendaftar = $pendaftar[0];
-          $message->to($pendaftar->email, $pendaftar->nama)
-              ->from('system@masuk-ptn.com','Tim Masuk PTN')
-              ->subject('Tiket Try Out di MASUK PTN');
-        });
+        if($p->email != ""){
+          $data['pendaftar'] = $p;
+          $data['product'] = $transaksi;
+          Mail::send('admin.email-selamat', $data, function($message) use ($p){
+            $message->to($p->email, $p->nama)
+                ->from('necinstitute123@gmail.com','Newcastle English Institute')
+                ->subject('Nota Transaksi');
+          });
+        }
       }
       return redirect()->back();
     }
