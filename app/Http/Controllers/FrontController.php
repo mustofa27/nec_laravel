@@ -11,6 +11,7 @@ use App\Program;
 use App\ProgramTransaksi;
 use App\Penginapan;
 use App\Galeri;
+use App\Group;
 
 use Mail;
 use PDF;
@@ -33,7 +34,8 @@ class FrontController extends Controller
     $program = Program::where('status', 'aktif')
       ->orderBy('id', 'desc')
       ->get();
-		return view('front.home', compact('artikel', 'galeri', 'program'));
+    $group = Group::orderBy('id', 'desc')->get();
+		return view('front.home', compact('artikel', 'galeri', 'program','group'));
 	}
 
   public function article($url){

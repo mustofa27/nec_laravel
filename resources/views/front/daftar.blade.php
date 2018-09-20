@@ -174,64 +174,71 @@
                                     <h4>Informasi Tambahan</h4>
                                 </div>
                             </div>
-                            <div class="row box_registrasi">
-                                <h5>Tambah Peserta baru</h5>
-
-                                <div class="input-group control-group after-add-more">
-                                    <div class="input-group-btn"> 
-                                        <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row box_registrasi">
-                                <h5>Info Kursus</h5>
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label" for="pendaftar_tgl_lahir">Tanggal Mulai</label>
-                                        <?php if(empty($course_date_start)){?>
-                                        <p>Silahkan pilih tanggal mulai untuk program anda.</p>
-                                        <select class="form-control" name="course_date_start" id="course_date_start" data-validate="required" data-message-required="Harus memilih tanggal mulai">
-                                            <option value="">Pilih</option>
-                                            <?php $tanggal = date('d'); $bulan = date('n'); $tahun = date('Y');
-                                                if($tanggal < 10){
-                                                    $tanggal_mulai = 10;
-                                                    $bulan_mulai = $bulan;
-                                                    $tahun_mulai = $tahun;
-                                                } elseif($tanggal >= 10 && $tanggal < 25){
-                                                    $tanggal_mulai = 25;
-                                                    $bulan_mulai = $bulan;
-                                                    $tahun_mulai = $tahun;
-                                                } else{
-                                                    $tanggal_mulai = 10;
-                                                    $bulan_mulai = $bulan+1;
-                                                    if($bulan_mulai > 12){
-                                                        $bulan_mulai = 1;
-                                                        $tahun_mulai = $tahun+1;
-                                                    }
-                                                }
-                                            ?>
-                                            <?php for($i = 0; $i < 10; $i++) {?>
-                                            <option value="<?php echo "".$tahun_mulai."-".$bulan_mulai."-".$tanggal_mulai; ?>"><?php echo date('j F Y', strtotime("".$tahun_mulai."-".$bulan_mulai."-".$tanggal_mulai)); ?></option>
-                                            <?php 
-                                                if($tanggal_mulai == 10){
-                                                    $tanggal_mulai = 25;
-                                                } else{
-                                                    $tanggal_mulai = 10;
-                                                    $bulan_mulai++;
-                                                    if($bulan_mulai > 12){
-                                                        $bulan_mulai = 1;
-                                                        $tahun_mulai = $tahun+1;
-                                                    }
-                                                }
-                                            ?>
-                                            <?php }?>
-                                        </select>
-                                        <?php } else{?>
-                                        <input class="form-control" name="course_date_start" id="course_date_start" placeholder="Tanggal Mulai" value="<?php echo $course_date_start; ?>" disabled/>
-                                        <?php } ?>
+                                    <strong>Tambah Peserta baru</strong><br><br>
+                                    <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i></button>
+                                    <div class="input-group control-group after-add-more">
+                                        <div class="input-group-btn"> 
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <br>
+                                    <strong>Info Kursus</strong><br><br>
+                                    <div  class="col-md-12">
+                                    <div class="form-group">
+                                            <label class="control-label" for="pendaftar_tgl_lahir">Tanggal Mulai</label>
+                                            <?php if(empty($course_date_start)){?>
+                                            <br>
+                                            <br>
+                                            <p>Silahkan pilih tanggal mulai untuk program anda.</p>
+                                            <br>
+                                            <select class="form-control" name="course_date_start" id="course_date_start" data-validate="required" data-message-required="Harus memilih tanggal mulai">
+                                                <option value="">Pilih</option>
+                                                <?php $tanggal = date('d'); $bulan = date('n'); $tahun = date('Y');
+                                                    if($tanggal < 10){
+                                                        $tanggal_mulai = 10;
+                                                        $bulan_mulai = $bulan;
+                                                        $tahun_mulai = $tahun;
+                                                    } elseif($tanggal >= 10 && $tanggal < 25){
+                                                        $tanggal_mulai = 25;
+                                                        $bulan_mulai = $bulan;
+                                                        $tahun_mulai = $tahun;
+                                                    } else{
+                                                        $tanggal_mulai = 10;
+                                                        $bulan_mulai = $bulan+1;
+                                                        if($bulan_mulai > 12){
+                                                            $bulan_mulai = 1;
+                                                            $tahun_mulai = $tahun+1;
+                                                        }
+                                                    }
+                                                ?>
+                                                <?php for($i = 0; $i < 10; $i++) {?>
+                                                <option value="<?php echo "".$tahun_mulai."-".$bulan_mulai."-".$tanggal_mulai; ?>"><?php echo date('j F Y', strtotime("".$tahun_mulai."-".$bulan_mulai."-".$tanggal_mulai)); ?></option>
+                                                <?php 
+                                                    if($tanggal_mulai == 10){
+                                                        $tanggal_mulai = 25;
+                                                    } else{
+                                                        $tanggal_mulai = 10;
+                                                        $bulan_mulai++;
+                                                        if($bulan_mulai > 12){
+                                                            $bulan_mulai = 1;
+                                                            $tahun_mulai = $tahun+1;
+                                                        }
+                                                    }
+                                                ?>
+                                                <?php }?>
+                                            </select>
+                                            <?php } else{?>
+                                            <input class="form-control" name="course_date_start" id="course_date_start" placeholder="Tanggal Mulai" value="<?php echo $course_date_start; ?>" disabled/>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+    
+                                </div>
                             </div>
+
                         </div>
                         
                         <div class="tab-pane with-bg" id="fwv-4">

@@ -1103,8 +1103,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 10px;
   list-style-type: none;
   height: 400px;
-  margin: 0;
   padding: 0;
+  text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -1119,8 +1119,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .price li {
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .price .grey {

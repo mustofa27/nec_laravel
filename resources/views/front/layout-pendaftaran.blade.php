@@ -20,8 +20,11 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap.css')}}">
+  <!-- this -->
+
   <link href="{{ asset('front/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap.css')}}">
+  <!-- <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap-ana.css')}}"> -->
 
   <!-- Libraries CSS Files -->
   <link href="{{ asset('front/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -163,20 +166,19 @@
         </a>
       </div>
       <nav class="navbar navbar-expand-lg" style="z-index: 100; background-color: white;" id="nav-menu-container">
-        <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa fa-icon fa-bars" style="color: black"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto" style= "font-size:16px;" >
           <?php
             $links = [
               [url('/'), 'Home'],
               [url('/daftar'), 'Daftar'],
               [url('/konfirmasi'), 'Konfirmasi Pembayaran'],
-              [url('/cek-status'), 'Galeri'],
-              [url('/hasil'), 'Artikel'],
+              [url('/gallery'), 'Galeri'],
+              [url('/article'), 'Artikel'],
             ];
             $class = '';
             foreach ($links as $key => $value) {
