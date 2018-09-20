@@ -2,10 +2,9 @@
   .invoice-box {
       max-width: 800px;
       margin: auto;
-      padding: 30px;
       box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 10px;
+      line-height: 18px;
       font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
   }
 
@@ -25,7 +24,7 @@
   }
 
   .invoice-box .title {
-      font-size: 25px;
+      font-size: 14px;
       line-height: 18px;
       color: #333;
       font-weight: bold;
@@ -36,7 +35,7 @@
       border-bottom: 1px solid #ddd;
       border-top: 3px solid #59d88c;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 14px;
   }
 
   .invoice-box table tr.item td{
@@ -85,44 +84,25 @@
                     <td>
                         <img class="unpaid" src="{{ asset('front/img/unpaid.jpg') }}">
                     </td>
+                    <?php } else{?>
+                    <td>
+                        <img class="unpaid" src="{{ asset('front/img/paid.png') }}">
+                    </td>
                     <?php }?>
                 </tr>
             </table>
-            <br/><br/>
+            <h2>Bukti Pendaftaran</h2>
             <table>
-                <tr class="heading" >
-                    <td colspan="2">Bukti Pendaftaran
-                    </td>
-                </tr>
                 <tr class="item">
-                    <td style="width:35%">Kode Transaksi</td>
+                    <td>Kode Transaksi</td>
                     <td>{{$transaksi->kode}}</td>
-                </tr>
-                <tr class="item">
-                    <td>Paket</td>
-                    <?php $total_harga_paket = 0;?>
-                    <td>
-                        <ul>
-                            @foreach($program as $p)
-                            <li>
-                                {{$p->name}}
-                            </li>
-                            <?php $total_harga_paket+=$p->harga;?>
-                            @endforeach
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="item">
-                    <td>Penginapan</td>
-                    <td>
-                      {{$penginapan->name}}
-                    </td>
+                    <td>Tanggal Transaksi</td>
+                    <td>{{$transaksi->created_at}}</td>
                 </tr>
             </table>  
-            <br/><br/>
             <table>
               <tr class="heading" >
-                  <td colspan="2">Daftar Peserta
+                  <td colspan="2">Pendaftar Utama
                   </td>
               </tr>
               <tr class="item">
@@ -149,28 +129,57 @@
                       {{$pendaftar->hp}}
                   </td>
               </tr>
+              <tr class="item">
+                    <td>Jumlah Pendaftar</td>
+                    <td>
+                      {{$jumlah_pendaftar}}
+                    </td>
+                </tr>
             </table>
             <br/><br/>
             <table>
-                <tr class="heading">
-                    <td colspan="2">
-                        Pembayaran
-                    </td>
+              <tr class="heading">
+                <td colspan="4">
+                    Pembayaran
+                </td>
+              </tr>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Harga</th>
+                  <th>Jumlah</th>
+                  <th>Sub Total</th>
                 </tr>
+              </thead>
+              <tbody>
+                @foreach($program as $p)
                 <tr class="item">
-                    <td style="width:35%">
-                        Harga Paket
+                    <td>
+                        {{$p->name}}
                     </td>
                     <td>
-                        {{$total_harga_paket}}
+                        {{$p->harga}}
+                    </td>
+                    <td>
+                        {{$jumlah_pendaftar}}
+                    </td>
+                    <td>
+                        {{$p->harga * $jumlah_pendaftar}}
                     </td>
                 </tr>
+                @endforeach
                 <tr class="item">
-                    <td style="width:35%">
-                        Harga Penginapan
+                    <td>
+                        {{$penginapan->name}}
                     </td>
                     <td>
                         {{$penginapan->harga}}
+                    </td>
+                    <td>
+                        {{$jumlah_pendaftar}}
+                    </td>
+                    <td>
+                        {{$penginapan->harga * $jumlah_pendaftar}}
                     </td>
                 </tr>
                 <tr class="item">
@@ -178,15 +187,33 @@
                         Biaya Administrasi
                     </td>
                     <td>
-                        25000 
+                        25000
+                    </td>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        25000
                     </td>
                 </tr>
                 <tr>
                     <td class="item last">Total</td>
                     <td class="item last">
+                        
+                    </td>
+                    <td class="item last">
+                        
+                    </td>
+                    <td class="item last">
                         {{$transaksi->grand_total}}
                     </td>
                 </tr>
+              </tbody>
             </table>
+            <?php if($transaksi->status != "accepted"){?>
+              <br/>
+              <h4>Silahkan melakukan pembayaran ke salah satu rekening dibawah ini</h4>
+              <img src="{{ asset('front/img/rekening.jpg') }}" style="width:100%;height:auto;"> 
+            <?php }?>            
         </div>
 </body>

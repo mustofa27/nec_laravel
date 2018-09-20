@@ -144,7 +144,7 @@ class FrontController extends Controller
     }
 		$pendaftar = Pendaftar::where('id_transaksi', $product->id)->where('email', '!=', '')->first();
     $pendaftars = Pendaftar::where('id_transaksi', $product->id)->get();
-    $this->kirimEmail($product, $pendaftar, $pendaftars);
+    //$this->kirimEmail($product, $pendaftar, $pendaftars);
 		return view('front.daftar-berhasil', compact('pendaftars', 'product'));
 	}
   function kirimEmail($product, $pendaftar, $pendaftars){
@@ -217,7 +217,8 @@ class FrontController extends Controller
       $data['program']  = Program::join('program_transaksis','program_transaksis.id_program','programs.id')
         ->where('program_transaksis.id_transaksi','=',$transaksi->id)->get();
       $data['transaksi'] = $transaksi;
-      $pdf = PDF::loadView('front.invoice', $data);
+      $pdf = PDF::loadView('front.invoice', $data)
+        ->setPaper('A5', 'potrait');
       return $pdf->download('tiket.pdf');
     }
   }
