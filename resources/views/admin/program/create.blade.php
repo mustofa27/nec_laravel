@@ -104,6 +104,30 @@
                 @endif
               </div>
               <div class="form-group">
+                <label>Rating</label>
+                @if(isset($product->rate))
+                <input value="{{ $product->rate }}"  type="number" class="form-control" name="rate" />
+                @else
+                <input type="number" class="form-control" name="rate" />
+                @endif
+              </div>
+              <div class="form-group">
+                <label>Jumlah Pertemuan</label>
+                @if(isset($product->jumlah_pertemuan))
+                <input value="{{ $product->jumlah_pertemuan }}"  type="text" class="form-control" name="jumlah_pertemuan" />
+                @else
+                <input type="text" class="form-control" name="jumlah_pertemuan" />
+                @endif
+              </div>
+              <div class="form-group">
+                <label>Opsi Tanggal Mulai</label>
+                @if(isset($product->opsi_tanggal_mulai))
+                <input value="{{ $product->opsi_tanggal_mulai }}"  type="text" class="form-control" name="opsi_tanggal_mulai" />
+                @else
+                <input type="text" class="form-control" name="opsi_tanggal_mulai" />
+                @endif
+              </div>
+              <div class="form-group">
                 <label>Tanggal Mulai</label>
                 @if(isset($product->tanggal_mulai))
                 <input value="{{ $product->tanggal_mulai }}"  type="date" class="date form-control datepicker" name="tanggal_mulai" />

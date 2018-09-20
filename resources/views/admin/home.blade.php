@@ -52,6 +52,7 @@
                       <td>
                         <a href="{{ url('transaksi/accept', $s->id) }}">Accept</a>
                         <a href="{{ url('transaksi/reject', $s->id) }}">Reject</a>
+                        <a href="{{url('download/'.$s->kode)}}">Download Invoice</a>
                       </td>
                     </tr>
                   @endforeach

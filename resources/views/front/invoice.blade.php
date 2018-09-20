@@ -99,6 +99,10 @@
                     <td>Tanggal Transaksi</td>
                     <td>{{$transaksi->created_at}}</td>
                 </tr>
+                <tr class="item">
+                    <td>Tanggal Mulai</td>
+                    <td>{{$transaksi->tanggal_mulai}}</td>
+                </tr>
             </table>  
             <table>
               <tr class="heading" >
@@ -136,7 +140,7 @@
                     </td>
                 </tr>
             </table>
-            <br/><br/>
+            <br/>
             <table>
               <tr class="heading">
                 <td colspan="4">
@@ -211,7 +215,6 @@
               </tbody>
             </table>
             <?php if($transaksi->status != "accepted"){?>
-              <br/>
               <h4>Silahkan melakukan pembayaran ke salah satu rekening dibawah ini</h4>
               <img src="{{ asset('front/img/rekening.jpg') }}" style="width:100%;height:auto;"> 
             <?php }?>            

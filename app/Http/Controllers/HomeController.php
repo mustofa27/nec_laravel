@@ -100,7 +100,7 @@ class HomeController extends Controller
     {
         $data['title'] = 'Pendaftar';
         $data['pendaftar'] = Pendaftar::leftJoin('transaksis', 'transaksis.id', 'pendaftars.id_transaksi')
-          ->select('pendaftars.*', 'transaksis.kode')->get();
+          ->select('pendaftars.*', 'transaksis.kode as kode_transaksi')->get();
         return view('admin.pendaftar', compact('data'));
     }
 
