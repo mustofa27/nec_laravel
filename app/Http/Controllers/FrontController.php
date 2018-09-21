@@ -34,8 +34,12 @@ class FrontController extends Controller
     $program = Program::where('status', 'aktif')
       ->orderBy('id', 'desc')
       ->get();
-    $group = Group::orderBy('id', 'desc')->get();
-		return view('front.home', compact('artikel', 'galeri', 'program','group'));
+    //$group = Group::orderBy('id', 'desc')->get();
+    //$group = Group::find($id);
+    $datagroup['program'] = Program::leftJoin('groups','groups.id','programs.id_group')
+          ->select('programs.*','groups.name as group')
+          ->get();
+		return view('front.home', compact('artikel', 'galeri', 'program','datagroup'));
 	}
 
   public function article($url){

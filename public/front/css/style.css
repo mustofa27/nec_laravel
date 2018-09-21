@@ -1101,8 +1101,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 .price {
   border: 1px solid #c8c8c8;
   border-radius: 10px;
-  list-style-type: none;
-  height: 400px;
+  list-style-type: none;  
+  height: 350px;
   padding: 0;
   text-align: center;
   -webkit-transition: 0.3s;
