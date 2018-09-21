@@ -57,6 +57,9 @@ class ProgramController extends Controller
         $program->tipe = $request->tipe;
         $program->status = $request->status;
         $program->durasi = $request->durasi;
+        $program->rate = $request->rate;
+        $program->jumlah_pertemuan = $request->jumlah_pertemuan;
+        $program->opsi_tanggal_mulai = $request->opsi_tanggal_mulai;
         $program->tanggal_mulai = $request->tanggal_mulai;
         $program->tanggal_berakhir = $request->tanggal_berakhir;
         $program->id_group = $request->id_group;

@@ -29,6 +29,7 @@
                     <th>Tanggal Lahir</th>
                     <th>Institusi</th>
                     <th>Kode Transaksi</th>
+                    <th>Tanggal Pendaftaran</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -43,6 +44,7 @@
                     <th>Tanggal Lahir</th>
                     <th>Institusi</th>
                     <th>Kode Transaksi</th>
+                    <th>Tanggal Pendaftaran</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -59,6 +61,7 @@
                       <td>{{ $s->tgl_lahir }}</td>
                       <td>{{ $s->institusi }}</td>
                       <td>{{ $s->kode_transaksi }}</td>
+                      <td>{{ $s->created_at }}</td>
                     </tr>
                   @endforeach
                 </tbody>

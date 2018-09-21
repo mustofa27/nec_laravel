@@ -27,6 +27,9 @@
                     <th>Tipe</th>
                     <th>Status</th>
                     <th>Durasi</th>
+                    <th>Jumlah Pertemuan</th>
+                    <th>Rating</th>
+                    <th>Opsi Tanggal Mulai</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Group</th>
@@ -42,6 +45,9 @@
                     <th>Tipe</th>
                     <th>Status</th>
                     <th>Durasi</th>
+                    <th>Jumlah Pertemuan</th>
+                    <th>Rating</th>
+                    <th>Opsi Tanggal Mulai</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Group</th>
@@ -59,6 +65,9 @@
                       <td>{{ $s->tipe }}</td>
                       <td>{{ $s->status }}</td>
                       <td>{{ $s->durasi }}</td>
+                      <td>{{ $s->jumlah_pertemuan }}</td>
+                      <td>{{ $s->rate }}</td>
+                      <td>{{ $s->opsi_tanggal_mulai }}</td>
                       <td>{{ $s->tanggal_mulai }}</td>
                       <td>{{ $s->tanggal_berakhir }}</td>
                       <td>{{ $s->group }}</td>
