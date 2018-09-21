@@ -79,18 +79,13 @@
         </div>
         <div class="row">
           <?php $count = 0;?>
-          @foreach($program as $l)  
+          @foreach($datagroup['program'] as $l)  
           <?php if ($count == 3) break;?>
           <div class="columns">
             <ul class="price">
               <li class="header">{{$l->name}}</li>
               <li class="grey">{{"Rp ".$l->harga}}</li>
-               @foreach ($group as $gr) 
-                  <?php if ($l->id_group == $gr->id_group)?>
-                        <li>
-                            {{$gr->name}}
-                        </li>
-               @endforeach
+              <li>{{$l->group}}</li>
               <li>{{$l->durasi}}</li>
               <li>30 pertemuan</li>
               <li>Buka setiap tanggal 10&25</li>
