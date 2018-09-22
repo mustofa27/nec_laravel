@@ -1,13 +1,5 @@
 @extends('front.layout-pendaftaran')
-@section('content')s
-
-<style type="text/css">
-    @media screen and (max-width: 360px) {
-      .table-responsive .table  {
-         width:95%;
-      }
-    }
-</style>
+@section('content')
     <section id="services">
     <div class="container">
         <div class="panel panel-default">
@@ -23,27 +15,27 @@
                     {!! csrf_field() !!}
                     <ul class="tabs">
                       <li class="active">
-                          <a href="#fwv-1" data-toggle="tab">
+                          <a class="name-tab" href="#fwv-1" data-toggle="tab" >
                               Daftar Paket
                           </a>
                       </li>
                       <li>
-                          <a href="#fwv-2" data-toggle="tab">
+                          <a class="name-tab"  href="#fwv-2" data-toggle="tab">
                               Informasi Umum Pendaftar
                           </a>
                       </li>
                       <li>
-                          <a href="#fwv-3" data-toggle="tab">
+                          <a class="name-tab"  href="#fwv-3" data-toggle="tab">
                               Informasi Tambahan
                           </a>
                       </li>
                       <li>
-                          <a href="#fwv-4" data-toggle="tab">
+                          <a class="name-tab"  href="#fwv-4" data-toggle="tab">
                               Penginapan
                           </a>
                       </li>
                       <li>
-                          <a href="#fwv-5" data-toggle="tab">
+                          <a class="name-tab"  href="#fwv-5" data-toggle="tab">
                               Konfirmasi Data
                           </a>
                       </li>

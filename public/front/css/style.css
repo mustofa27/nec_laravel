@@ -1102,7 +1102,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: 1px solid #c8c8c8;
   border-radius: 10px;
   list-style-type: none;  
-  height: 350px;
+  height: 400px;
   padding: 0;
   text-align: center;
   -webkit-transition: 0.3s;
@@ -1114,9 +1114,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .price .header {
-  font-size: 25px;
+  font-size: 20px;
   color: #6cc;
 }
+
+@media only screen and (max-width: 360px) {
+    .price .header {
+        font-size: 12px;
+    }
+}
+
 
 .price li {
   padding: 10px;
@@ -1124,14 +1131,48 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 360px) {
+    .price li {
+        font-size: 12px;
+    }
+}
+
 .price .grey {
   background: #6cc;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 360px) {
+    .price .grey {
+        font-size: 12px;
+    }
+}
+
+
+@media only screen and (max-width: 360px) {
     .columns {
         width: 100%;
+        font-size: 12px;
+    }
+}
+
+.title-header{
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 360px) {
+    .title-header{
+        font-size: 14px;
+    }
+}
+
+.name-tab{
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 360px) {
+    .name-tab{
+        font-size: 10px;
     }
 }

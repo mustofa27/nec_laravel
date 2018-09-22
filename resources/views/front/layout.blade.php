@@ -113,9 +113,9 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#body" class="scrollto" style="font-size: 20px">
+        <a href="#body" class="title-header">
           <img src="{{ asset('general/img/logo.png') }}" style="height:50px; width:36px;">
-          &nbsp;&nbsp;<b>Newcastle English Institute</b>
+          &nbsp;&nbsp;<b class="title-header" >Newcastle English Institute</b>
         </a>
       </div>
       <nav class="navbar navbar-expand-lg" style="z-index: 100; background-color: white;" id="nav-menu-container">
