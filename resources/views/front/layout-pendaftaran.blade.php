@@ -24,7 +24,7 @@
 
   <link href="{{ asset('front/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap.css')}}">
-  <!-- <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap-ana.css')}}"> -->
+  <link rel="stylesheet" href="{{ asset('xenon/assets/css/bootstrap-ana.css')}}">
 
   <!-- Libraries CSS Files -->
   <link href="{{ asset('front/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">

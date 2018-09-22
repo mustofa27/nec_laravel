@@ -1,5 +1,13 @@
 @extends('front.layout-pendaftaran')
-@section('content')
+@section('content')s
+
+<style type="text/css">
+    @media screen and (max-width: 360px) {
+      .table-responsive .table  {
+         width:95%;
+      }
+    }
+</style>
     <section id="services">
     <div class="container">
         <div class="panel panel-default">
@@ -52,7 +60,7 @@
                             <h3>
                                 Paket yang Tersedia
                             </h3><br/>
-                            <div class="row">
+<!--                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group" >
                                         <?php foreach ($program as $p) { ?>
@@ -79,9 +87,40 @@
                                         <?php } ?>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="table-responsive">          
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Program</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($program as $l)
+                                          <tr>
+                                            <td>
+                                              <div class="columns">
+                                                <ul class="price">
+                                                    <br>
+                                                  <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $l->id; ?>"> 
+                                                  <li class="header">{{$l->name}}</li>
+                                                  <li class="grey">{{"Rp ".$l->harga}}</li>
+                                                  <li>{{$l->group}}</li>
+                                                  <li>{{$l->durasi}}</li>
+                                                  <li>{{$l->jumlah_pertemuan}}</li>
+                                                  <li>{{$l->tanggal_mulai}}</li>
+                                                </ul>
+                                              </div>
+                                            </td>
+                                            <td>
+                                                {{$l->detail}}
+                                            </td>
+                                          </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-                            <br/><br/>
-
                         </div>
 
                         <div class="tab-pane with-bg" id="fwv-2">

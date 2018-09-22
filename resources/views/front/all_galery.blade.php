@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row">
           @foreach($all_galery as $g)
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-3 col-md-4">
               <div class="portfolio-item wow fadeInUp">
                 <a href="{{ asset($g->path) }}" class="portfolio-popup">
                   <img src="{{ asset($g->path) }}" alt="">

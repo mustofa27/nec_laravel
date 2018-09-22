@@ -1087,12 +1087,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 /*////////////////////////////////////////////////////////////////*/
-{
+* {
   box-sizing: border-box;
 }
 .columns {
   float: left;
-  width: 23.3%;
+  width: 207px;
   padding: 8px;
   font-family: 'Lato', sans-serif;
 
@@ -1128,4 +1128,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #6cc;
   font-size: 20px;
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .columns {
+        width: 100%;
+    }
 }

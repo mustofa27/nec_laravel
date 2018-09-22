@@ -87,8 +87,8 @@
               <li class="grey">{{"Rp ".$l->harga}}</li>
               <li>{{$l->group}}</li>
               <li>{{$l->durasi}}</li>
-              <li>30 pertemuan</li>
-              <li>Buka setiap tanggal 10&25</li>
+              <li>{{$l->jumlah_pertemuan}}</li>
+              <li>{{$l->tanggal_mulai}}</li>
             </ul>
           </div>
           <?php $count++;?>
@@ -109,7 +109,9 @@
 
       <div class="container-fluid">
         <div class="row">
+          <?php $countg = 0;?>
           @foreach($galeri as $g)
+          <?php if ($countg == 10) break;?>
             <div class="col-lg-3 col-md-4">
               <div class="portfolio-item wow fadeInUp">
                 <a href="{{ asset($g->path) }}" class="portfolio-popup">
@@ -120,6 +122,7 @@
                 </a>
               </div>
             </div>
+          <?php $countg++;?>
           @endforeach
         </div>
       </div>
