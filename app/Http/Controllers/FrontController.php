@@ -148,7 +148,7 @@ class FrontController extends Controller
     }
 		$pendaftar = Pendaftar::where('id_transaksi', $product->id)->where('email', '!=', '')->first();
     $pendaftars = Pendaftar::where('id_transaksi', $product->id)->get();
-    //$this->kirimEmail($product, $pendaftar, $pendaftars);
+    $this->kirimEmail($product, $pendaftar, $pendaftars);
 		return view('front.daftar-berhasil', compact('pendaftars', 'product'));
 	}
   function kirimEmail($product, $pendaftar, $pendaftars){
