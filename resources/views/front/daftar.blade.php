@@ -76,7 +76,7 @@
                                                   <li>{{$l->group}}</li>
                                                   <li>{{$l->durasi}}</li>
                                                   <li>{{$l->jumlah_pertemuan}}</li>
-                                                  <li>{{$l->tanggal_mulai}}</li>
+                                                  <li>{{$l->opsi_tanggal_mulai}}</li>
                                                 </ul>
                                               </div>
                                             </td>
