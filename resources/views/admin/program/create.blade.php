@@ -40,9 +40,9 @@
               <div class="form-group">
                 <label>Detail</label>
                 @if(isset($product->detail))
-                <textarea class="form-control col-sm-12" name="detail">{{ $product->detail }}</textarea>
+                <textarea class="form-control ckeditor" name="detail">{{ $product->detail }}</textarea>
                 @else
-                <textarea class="form-control col-sm-12" name="detail"></textarea>
+                <textarea class="form-control ckeditor" name="detail"></textarea>
                 @endif
               </div> 
               <div class="form-group">

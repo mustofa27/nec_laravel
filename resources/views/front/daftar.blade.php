@@ -52,34 +52,9 @@
                             <h3>
                                 Paket yang Tersedia
                             </h3><br/>
-<!--                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group" >
-                                        <?php foreach ($program as $p) { ?>
-                                            <div class="col-md-6">
-                                                <div class="panel panel-color panel-info" style="border: 1px solid #eeee; ">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">
-                                                            <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $p->id; ?>"> 
-                                                            <?php 
-                                                              echo $p->name; ?> (Harga : <?php echo $p->harga;
-                                                            ?>)
-                                                        </h3>
-                                                    </div>    
-                                                    <div class="panel-body">
-                                                        <ul class="list-unstyled line-height-default" style="height:80px">
-                                                            <?php if($p->tanggal_mulai != null){?>
-                                                            <?php echo $p->tanggal_mulai; ?>&nbsp;-&nbsp<?php echo $p->tanggal_berakhir; ?>
-                                                            <?php }?>
-                                                            <?php echo $p->detail; ?>
-                                                        </ul>  
-                                                    </div>                      
-                                                </div>  
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div> -->
+                            <h5>
+                                Anda bisa memilih lebih dari satu program untuk program-program yang berdurasi 2 Minggu
+                            </h5><br/>
                             <div class="table-responsive">          
                                 <table class="table">
                                     <thead>
@@ -106,7 +81,9 @@
                                               </div>
                                             </td>
                                             <td>
-                                                {{$l->detail}}
+                                                <article>
+                                                    {!!$l->detail!!}
+                                                </article>
                                             </td>
                                           </tr>
                                         @endforeach
@@ -239,6 +216,7 @@
                                                     } else{
                                                         $tanggal_mulai = 10;
                                                         $bulan_mulai = $bulan+1;
+                                                        $tahun_mulai = $tahun;
                                                         if($bulan_mulai > 12){
                                                             $bulan_mulai = 1;
                                                             $tahun_mulai = $tahun+1;

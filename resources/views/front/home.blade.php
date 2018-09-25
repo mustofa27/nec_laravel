@@ -24,13 +24,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/1.jpg') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/1.png') }}" alt="">
         </div>
         <div class="carousel-item">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/2.jpg') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/2.png') }}" alt="">
         </div>
         <div class="carousel-item">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/3.jpg') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/3.png') }}" alt="">
         </div>
       </div>
     </div>
@@ -59,6 +59,8 @@
               <li><i class="ion-android-checkmark-circle"></i> Study Club</li>
               <li><i class="ion-android-checkmark-circle"></i> Sertificate</li>
               <li><i class="ion-android-checkmark-circle"></i> Dresscode*</li>
+              <li><i class="ion-android-checkmark-circle"></i> Scoring</li>
+              <li><i class="ion-android-checkmark-circle"></i> Free Konsultasi</li>
             </ul>
 
           </div>
@@ -78,9 +80,7 @@
           <p></p>
         </div>
         <div class="row">
-          <?php $count = 0;?>
           @foreach($datagroup['program'] as $l)  
-          <?php if ($count == 3) break;?>
           <div class="columns">
             <ul class="price">
               <li class="header">{{$l->name}}</li>
@@ -91,7 +91,6 @@
               <li>{{$l->tanggal_mulai}}</li>
             </ul>
           </div>
-          <?php $count++;?>
           @endforeach
         </div>
       </div>
@@ -173,7 +172,7 @@
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
               <h3>Nomor Telepon</h3>
-              <p><a href="tel:+62 87866107170">+62 87866107170</a></p>
+              <p><a href="tel:+62 81335306466">+62 81335306466</a></p>
             </div>
           </div>
 
@@ -181,7 +180,7 @@
             <div class="contact-email">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
-              <p><a href="mailto:newcastleenglishclub@gmail.com">newcastleenglishclub@gmail.com</a></p>
+              <p><a href="mailto:visit.kampoenginggris@gmail.com">visit.kampoenginggris@gmail.com</a></p>
             </div>
           </div>
 
