@@ -143,8 +143,8 @@
   <section id="topbar" class="d-none d-lg-block">
     <div class="container clearfix">
       <div class="contact-info float-left">
-        <i class="fa fa-envelope-o"></i> <a href="mailto:newcastleenglishclub@gmail.com">newcastleenglishclub@gmail.com</a>
-        <i class="fa fa-phone"></i> +62 87866107170
+        <i class="fa fa-envelope-o"></i> <a href="mailto:visit.kampoenginggris@gmail.com">visit.kampoenginggris@gmail.com</a>
+        <i class="fa fa-phone"></i> +62 81335306466
       </div>
       <div class="social-links float-right">
         <a href="https://www.facebook.com/newcastleenglishclub/" class="facebook"><i class="fa fa-facebook"></i></a>
