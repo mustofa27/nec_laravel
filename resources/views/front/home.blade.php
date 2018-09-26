@@ -24,13 +24,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/1.png') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/HEADER1.png') }}" alt="">
         </div>
         <div class="carousel-item">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/2.png') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/HEADER2.png') }}" alt="">
         </div>
         <div class="carousel-item">
-          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/3.png') }}" alt="">
+          <img class="d-block" style="width: 100%;" src="{{ asset('front/img/carousel/HEADER3.png') }}" alt="">
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 about-img">
-            <img src="{{ asset('general/img/visit_kampung_inggris.png') }}" alt="">
+            <img src="{{ asset('general/img/logo_scan.png') }}" alt="">
           </div>
 
           <div class="col-lg-6 content">

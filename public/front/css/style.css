@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #50d8af;
+  color: #007bff;
   transition: 0.5s;
 }
 
@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #50d8af;
+  background: #007bff;
   color: #fff;
   padding: 6px 12px 9px 12px;
   font-size: 16px;
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .back-to-top:focus {
-  background: #50d8af;
+  background: #007bff;
   color: #fff;
   outline: none;
 }
@@ -83,11 +83,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .contact-info a:hover {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #topbar .contact-info i {
-  color: #50d8af;
+  color: #007bff;
   padding: 4px;
 }
 
@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .social-links a:hover {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #topbar .social-links a:first-child {
@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header #logo h1 a span {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #header #logo img {
@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .intro-content h2 span {
-  color: #50d8af;
+  color: #007bff;
   text-decoration: underline;
 }
 
@@ -229,13 +229,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .intro-content .btn-projects {
-  background: #50d8af;
-  border: 2px solid #50d8af;
+  background: #007bff;
+  border: 2px solid #007bff;
 }
 
 #intro .intro-content .btn-projects:hover {
   background: none;
-  color: #50d8af;
+  color: #007bff;
 }
 
 #intro #intro-carousel {
@@ -353,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu li:hover > a, .nav-menu > .menu-active > a {
-  color: #50d8af;
+  color: #007bff;
 }
 
 .nav-menu > li {
@@ -381,7 +381,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: #50d8af;
+  color: #007bff;
 }
 
 .nav-menu ul ul {
@@ -468,11 +468,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #mobile-nav ul .menu-item-active {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #mobile-body-overly {
@@ -523,7 +523,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   width: 50px;
   height: 3px;
-  background: #50d8af;
+  background: #007bff;
   bottom: 0;
   left: 0;
 }
@@ -584,7 +584,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .content i {
   font-size: 20px;
   padding-right: 4px;
-  color: #50d8af;
+  color: #007bff;
 }
 
 #about .content ul {
@@ -631,7 +631,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .box .icon i:before {
   background: #007bff;
-  background: linear-gradient(45deg, #50d8af 0%, #a3ebd5 100%);
+  background: linear-gradient(45deg, #007bff 0%, #a3ebd5 100%);
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -702,7 +702,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #clients .owl-dot.active {
-  background-color: #50d8af;
+  background-color: #007bff;
 }
 
 /* Our Portfolio Section
@@ -841,7 +841,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #testimonials .owl-dot.active {
-  background-color: #50d8af;
+  background-color: #007bff;
 }
 
 /* Call To Action Section
@@ -885,8 +885,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #call-to-action .cta-btn:hover {
-  background: #50d8af;
-  border: 3px solid #50d8af;
+  background: #007bff;
+  border: 3px solid #007bff;
 }
 
 /* Our Team Section
@@ -911,7 +911,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #team .member .details {
-  background: #50d8af;
+  background: #007bff;
   color: #fff;
   padding: 15px;
   border-radius: 0 0 3px 3px;
@@ -957,7 +957,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 48px;
   display: inline-block;
   margin-bottom: 10px;
-  color: #50d8af;
+  color: #007bff;
 }
 
 #contact .contact-info address, #contact .contact-info p {
@@ -978,7 +978,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .contact-info a:hover {
-  color: #50d8af;
+  color: #007bff;
 }
 
 #contact .contact-address, #contact .contact-phone, #contact .contact-email {
@@ -1010,8 +1010,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form #sendmessage {
-  color: #50d8af;
-  border: 1px solid #50d8af;
+  color: #007bff;
+  border: 1px solid #007bff;
   display: none;
   text-align: center;
   padding: 15px;
@@ -1049,7 +1049,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form button[type="submit"] {
-  background: #50d8af;
+  background: #007bff;
   border: 0;
   border-radius: 3px;
   padding: 10px 30px;
@@ -1115,7 +1115,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .price .header {
   font-size: 20px;
-  color: #6cc;
+  color: #007bff;
 }
 
 @media only screen and (max-width: 360px) {
@@ -1138,7 +1138,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .price .grey {
-  background: #6cc;
+  background: #007bff;
   font-size: 18px;
   color: white;
 }
