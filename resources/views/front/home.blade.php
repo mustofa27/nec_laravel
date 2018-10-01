@@ -3,6 +3,9 @@
   <!--==========================
     Intro Section
   ============================-->
+  <style type="text/css">
+
+}</style>
   <section id="intro">
 
     <div class="intro-content">
@@ -82,6 +85,11 @@
         <div class="row">
           @foreach($datagroup['program'] as $l)  
           <div class="columns">
+            @if ( $l->durasi != "2 Minggu")
+                  <div class= "sale-box">
+                    <span class ="new">FAVORIT</span>
+                  </div>
+            @endif
             <ul class="price">
               <li class="header">{{$l->name}}</li>
               <li class="grey">{{"Rp ".$l->harga}}</li>
@@ -90,8 +98,29 @@
               <li>{{$l->jumlah_pertemuan}}</li>
               <li>{{$l->opsi_tanggal_mulai}}</li>
             </ul>
+            @if ( $l->rate/40 == 1)
+              <div class="rating-box">
+                <img class ="rating" src="{{ asset('front/img/1.png') }}">
+              </div>
+            @elseif ( $l->rate/40 == 2)
+              <div class="rating-box">
+                <img class ="rating" src="{{ asset('front/img/2.png') }}">
+              </div>
+            @elseif ( $l->rate/40 == 3)
+              <div class="rating-box">
+                <img class ="rating" src="{{ asset('front/img/3.png') }}">
+              </div>
+            @elseif ( $l->rate/40 == 4)
+              <div class="rating-box">
+                <img class ="rating" src="{{ asset('front/img/4.png') }}">
+              </div>
+            @elseif ( $l->rate/40 == 5)
+              <div class="rating-box">
+                <img class ="rating" src="{{ asset('front/img/5.png') }}">
+              </div>
+            @endif
           </div>
-          @endforeach
+          @endforeach 
         </div>
       </div>
     </section><!-- #portfolio -->

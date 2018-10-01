@@ -77,11 +77,16 @@
                                                   <li>{{$l->durasi}}</li>
                                                   <li>{{$l->jumlah_pertemuan}}</li>
                                                   <li>{{$l->opsi_tanggal_mulai}}</li>
-                                                </ul>
+                                                </ul>            
+                                                @if ( $l->durasi != "2 Minggu")
+                                                      <div class= "sale-box">
+                                                        <span class ="new">FAVORIT</span>
+                                                      </div>
+                                                @endif
                                               </div>
                                             </td>
                                             <td>
-                                                <article>
+                                                <article style = "color:black;">
                                                     {!!$l->detail!!}
                                                 </article>
                                             </td>
