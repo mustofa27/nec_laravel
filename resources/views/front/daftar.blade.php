@@ -67,23 +67,53 @@
                                         @foreach($program as $l)
                                           <tr>
                                             <td>
-                                              <div class="columns">
-                                                <ul class="price">
-                                                    <br>
-                                                  <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $l->id; ?>"> 
-                                                  <li class="header">{{$l->name}}</li>
-                                                  <li class="grey">{{"Rp ".$l->harga}}</li>
-                                                  <li>{{$l->group}}</li>
-                                                  <li>{{$l->durasi}}</li>
-                                                  <li>{{$l->jumlah_pertemuan}}</li>
-                                                  <li>{{$l->opsi_tanggal_mulai}}</li>
-                                                </ul>            
-                                                @if ( $l->durasi != "2 Minggu")
-                                                      <div class= "sale-box">
-                                                        <span class ="new">FAVORIT</span>
+                                                <div class="columns">
+                                                    @if ( $l->durasi != "2 Minggu")
+                                                          <div class= "sale-box">
+                                                            <span class ="new">FAVORIT</span>
+                                                          </div>
+                                                    @endif
+                                                    <ul class="price">
+                                                        <br>
+                                                      @if(!empty($id_program) && $l->id == $id_program)
+                                                        <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $l->id; ?>" checked> 
+                                                      @else
+                                                        <input type="checkbox" class="cbr cbr-secondary" name="id_program[]" id="id_program" data-validate="required" value="<?php echo $l->id; ?>"> 
+                                                      @endif
+                                                      <li class="header">{{$l->name}}</li>
+                                                      <li class="grey">{{"Rp ".$l->harga}}</li>
+                                                      <li>{{$l->group}}</li>
+                                                      <li>{{$l->durasi}}</li>
+                                                      <li>{{$l->jumlah_pertemuan}}</li>
+                                                      <li>{{$l->opsi_tanggal_mulai}}</li>
+                                                    </ul>            
+                                                      <br>
+                                                    @if ( $l->rate/40 < 1)
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/0.png') }}">
                                                       </div>
-                                                @endif
-                                              </div>
+                                                    @elseif ( $l->rate/40 >= 1 && $l->rate/40 < 2)
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/2.png') }}">
+                                                      </div>
+                                                    @elseif ( $l->rate/40 >= 2 && $l->rate/40 < 3)
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/2.png') }}">
+                                                      </div>
+                                                    @elseif ( $l->rate/40 >= 3 && $l->rate/40 < 4)
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/3.png') }}">
+                                                      </div>
+                                                    @elseif ( $l->rate/40 >= 4 && $l->rate/40 < 5)
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/4.png') }}">
+                                                      </div>
+                                                    @else
+                                                      <div class="rating-box">
+                                                        <img class ="rating" src="{{ asset('front/img/5.png') }}">
+                                                      </div>
+                                                    @endif
+                                                </div>
                                             </td>
                                             <td>
                                                 <article style = "color:black;">

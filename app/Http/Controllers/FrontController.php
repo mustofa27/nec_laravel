@@ -70,13 +70,12 @@ class FrontController extends Controller
 		return view('front.daftar', compact('program','penginapan'));
 	}
 
-  public function daftarByLokasi($id_lokasi){
-    $jurusan = Jurusan::orderBy('name', 'asc')->get();
-    $lokasi = Lokasi::orderBy('name', 'asc')->join('tryouts', 'tryouts.id_lokasi', 'lokasis.id')->select('lokasis.*')->get();
-    $to = Tryout::where('id_lokasi',$id_lokasi)->where('tanggal_pelaksanaan', '>', date('Y-m-d'))
-      ->orderBy('tanggal_pelaksanaan', 'desc')->get();
+  public function daftarByProgram($id_program){
+    $program = Program::orderBy('id_group', 'asc')->leftJoin('groups', 'programs.id_group', 'groups.id')
+      ->select('programs.*', 'groups.name as group')->get();
+    $penginapan = Penginapan::all();
     session()->forget('registered');
-    return view('front.daftar', compact('jurusan', 'lokasi', 'id_lokasi', 'to'));
+    return view('front.daftar', compact('program','penginapan','id_program'));
   }
 
 	public function daftarkan(Request $request){

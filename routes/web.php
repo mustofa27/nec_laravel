@@ -13,7 +13,7 @@
 
 Route::get('/', 'FrontController@home');
 Route::get('/daftar', 'FrontController@daftar');
-Route::get('/daftar/{id_lokasi}', 'FrontController@daftarByLokasi');
+Route::get('/daftar/{id_program}', 'FrontController@daftarByProgram');
 Route::get('/hasil', 'FrontController@hasil');
 Route::get('/pembahasan', 'FrontController@pembahasan');
 Route::post('/daftar', 'FrontController@daftarkan');
