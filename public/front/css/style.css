@@ -1206,7 +1206,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: bold;
   background: #FECC00;
   text-transform: uppercase;
-  padding: 58px 35px 17px 40px;
+  padding: 58px 15px 7px 40px;
   width: 281px;
   text-align: center;
   display: block;
@@ -1230,4 +1230,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 70%;
   display: block;
   margin: auto;
+}
+
+
+@media only screen and (max-width: 360px) {
+    .new{
+        font-size: 7px;
+        width: 331px;
+        left: -30px;
+        top: -51px;
+    }
 }

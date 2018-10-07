@@ -1,7 +1,6 @@
 @extends('front.layout-pendaftaran')
 @section('content')
     <section id="services">
-    <div class="container">
         <div class="panel panel-default">
             <!-- Form wizard with validation starts here -->
             <div class="panel-heading">
@@ -453,7 +452,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 @endsection
 @section('custom-script')
